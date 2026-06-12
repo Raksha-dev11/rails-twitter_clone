@@ -11,16 +11,17 @@
  * <action-text-attachment> element we wrap around attachments. Otherwise,
  * images in galleries will be squished by the max-width: 33%; rule.
 */
-.trix-content .attachment-gallery > action-text-attachment,
-.trix-content .attachment-gallery > .attachment {
+.trix-content .attachment-gallery>action-text-attachment,
+.trix-content .attachment-gallery>.attachment {
   flex: 1 0 33%;
   padding: 0 0.5em;
   max-width: 33%;
 }
 
-.trix-content .attachment-gallery.attachment-gallery--2 > action-text-attachment,
-.trix-content .attachment-gallery.attachment-gallery--2 > .attachment, .trix-content .attachment-gallery.attachment-gallery--4 > action-text-attachment,
-.trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
+.trix-content .attachment-gallery.attachment-gallery--2>action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--2>.attachment,
+.trix-content .attachment-gallery.attachment-gallery--4>action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--4>.attachment {
   flex-basis: 50%;
   max-width: 50%;
 }
@@ -28,4 +29,35 @@
 .trix-content action-text-attachment .attachment {
   padding: 0 !important;
   max-width: 100% !important;
+}
+
+action-text-attachment {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+}
+
+action-text-attachment .attachment {
+  padding: 0;
+  max-width: 100%;
+  height: auto;
+}
+
+action-text-attachment img,
+.trix-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.attachment {
+  display: block;
+  max-width: 100%;
+}
+
+.attachment img {
+  max-width: 100%;
+  height: auto;
 }

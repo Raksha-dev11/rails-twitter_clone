@@ -13,7 +13,7 @@
     <div class="post-form-content">
       <%= form_with(model: Post.new, local: true) do |form| %>
         <div class="form-field">
-          <%= form.text_area :title, placeholder: "What's happening?!", class: "post-input" %>
+          <%= form.rich_text_area :text, placeholder: "What's happening?!", class: "post-input" %>
         </div>
         <div class="form-actions">
           <%= form.submit "Post", class: "btn" %>

@@ -1,6 +1,6 @@
 <div id="<%= dom_id post %>" class="post">
   <div class="post-header">
-    <div class="post-avatar"><%= post.title.first.upcase %></div>
+    <div class="post-avatar"><%= post.text.to_plain_text.first.upcase rescue "P" %></div>
     <div class="post-info">
       <div class="post-meta">
         <span class="post-author">Anonymous User</span>
@@ -8,7 +8,7 @@
         <span class="post-time">just now</span>
       </div>
       <div class="post-content">
-        <%= post.title %>
+        <%= post.text %>
       </div>
       <div class="post-links">
         <%= link_to "View", post, class: "btn btn-secondary" %>
