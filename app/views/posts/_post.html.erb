@@ -1,12 +1,20 @@
-<div id="<%= dom_id post %>">
-  <p>
-    <strong></strong>
-    <%= post.title %>
-  </p>
-
-  <p>
-    <strong></strong>
-    <%= post.user_id %>
-  </p>
-
+<div id="<%= dom_id post %>" class="post">
+  <div class="post-header">
+    <div class="post-avatar"><%= post.title.first.upcase %></div>
+    <div class="post-info">
+      <div class="post-meta">
+        <span class="post-author">Anonymous User</span>
+        <span class="post-handle">@user</span>
+        <span class="post-time">just now</span>
+      </div>
+      <div class="post-content">
+        <%= post.title %>
+      </div>
+      <div class="post-links">
+        <%= link_to "View", post, class: "btn btn-secondary" %>
+        <%= link_to "Edit", edit_post_path(post), class: "btn btn-secondary" %>
+        <%= link_to "Delete", post, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
 </div>

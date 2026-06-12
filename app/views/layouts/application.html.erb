@@ -18,6 +18,54 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+      <div class="header-content">
+        <a href="/" class="site-title">𝕏</a>
+        <nav style="display: flex; gap: 20px; align-items: center;">
+          <%= link_to "Home", root_path, class: "nav-link #{request.path == '/' ? 'active' : ''}" %>
+          <%= link_to "Posts", posts_path, class: "nav-link #{request.path.start_with?('/posts') ? 'active' : ''}" %>
+          <% if request.path.start_with?('/posts') && !request.path.include?('/new') && !request.path.include?('/edit') %>
+            <%= link_to "New Post", new_post_path, class: "btn" %>
+          <% elsif !request.path.start_with?('/posts') %>
+            <%= link_to "New Post", new_post_path, class: "btn" %>
+          <% end %>
+          <% if user_signed_in? %>
+            <span style="color: var(--text-light); font-size: 14px;">
+              <%= current_user.email %>
+            </span>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
+          <% else %>
+            <%= link_to "Sign In", new_user_session_path, class: "btn" %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-secondary" %>
+          <% end %>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <%= yield %>
+    </div>
+
+    <style>
+      .nav-link {
+        color: var(--text-dark);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+      }
+
+      .nav-link:hover {
+        background-color: var(--hover-bg);
+      }
+
+      .nav-link.active {
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+    </style>
   </body>
 </html>

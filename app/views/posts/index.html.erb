@@ -1,16 +1,42 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Posts" %>
-
-<h1>Posts</h1>
-
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
+<div class="posts-header">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; gap: 12px; align-items: center;">
+      <%= link_to "← Home", root_path, style: "color: var(--primary-color); text-decoration: none; font-weight: bold;" %>
+      <h1 style="margin: 0;">Posts Feed</h1>
+    </div>
+  </div>
 </div>
 
-<%= link_to "New post", new_post_path %>
+<div class="form-container">
+  <div class="post-form-wrapper">
+    <div class="post-form-avatar">👤</div>
+    <div class="post-form-content">
+      <%= form_with(model: Post.new, local: true) do |form| %>
+        <div class="form-field">
+          <%= form.text_area :title, placeholder: "What's happening?!", class: "post-input" %>
+        </div>
+        <div class="form-actions">
+          <%= form.submit "Post", class: "btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if notice %>
+  <div style="color: green; padding: 16px 20px; text-align: center;">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div id="posts">
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <%= render post %>
+    <% end %>
+  <% else %>
+    <div class="text-center" style="padding: 40px 20px; color: var(--text-light);">
+      <p>No posts yet. Be the first to post!</p>
+    </div>
+  <% end %>
+</div>

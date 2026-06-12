@@ -1,11 +1,14 @@
 <% content_for :title, "New post" %>
 
-<h1>New post</h1>
+<div class="posts-header">
+  <h1>Compose new post</h1>
+</div>
 
-<%= render "form", post: @post %>
-
-<br>
-
-<div>
-  <%= link_to "Back to posts", posts_path %>
+<div class="form-container">
+  <div class="post-form-wrapper">
+    <div class="post-form-avatar">👤</div>
+    <div class="post-form-content">
+      <%= render "form", post: @post %>
+    </div>
+  </div>
 </div>
