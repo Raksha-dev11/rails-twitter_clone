@@ -1,3 +1,5 @@
+<% turbo_stream_from @post %>
+
 <% if notice %>
   <div style="color: green; padding: 16px 20px; text-align: center;">
     <%= notice %>
@@ -6,8 +8,13 @@
 
 <%= render @post %>
 
+<%= render partial: "like_section", locals: { post: @post } %>
+  
+
 <div class="form-container" style="text-align: center;">
   <%= link_to "Edit", edit_post_path(@post), class: "btn" %>
   <%= link_to "Back", posts_path, class: "btn btn-secondary" %>
   <%= link_to "Delete", @post, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-secondary", style: "border-color: #d32f2f; color: #d32f2f;" %>
 </div>
+
+<%= render "comments/comments", post: @post %>

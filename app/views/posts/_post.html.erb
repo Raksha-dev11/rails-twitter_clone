@@ -1,11 +1,11 @@
 <div id="<%= dom_id post %>" class="post">
   <div class="post-header">
-    <div class="post-avatar"><%= post.text.to_plain_text.first.upcase rescue "P" %></div>
+    <div class="post-avatar"><%= post.user&.email&.first&.upcase || "U" %></div>
     <div class="post-info">
       <div class="post-meta">
-        <span class="post-author">Anonymous User</span>
-        <span class="post-handle">@user</span>
-        <span class="post-time">just now</span>
+        <span class="post-author"><%= post.user&.email&.split('@')&.first || "User" %></span>
+        <span class="post-handle">@<%= post.user&.email&.split('@')&.first&.downcase || "user" %></span>
+        <span class="post-time"><%= time_ago_in_words(post.created_at) %> ago</span>
       </div>
       <div class="post-content">
         <%= post.text %>

@@ -1,0 +1,15 @@
+<div class="form-container">
+  <%= form_with model: [post, Comment.new], local: true do |f| %>
+    <div class="form-field">
+      <%= f.label :content, "Add a comment..." %>
+      <%= f.text_area :content, placeholder: "What do you think?", rows: 4 %>
+    </div>
+    <% if current_user %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    <% end %>
+    <div class="form-actions">
+      <%= f.submit "Reply", class: "btn" %>
+    </div>
+  <% end %>
+</div>
+

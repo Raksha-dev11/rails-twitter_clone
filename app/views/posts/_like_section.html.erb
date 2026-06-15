@@ -1,0 +1,22 @@
+<turbo_frame id="like-section-<%= post.id %>">
+  <div class="like-section">
+    <% if user_signed_in? %>
+      <% if post.likes.exists?(user: current_user) %>
+        <%= button_to post_like_path(post, post.likes.find_by(user: current_user)), method: :delete, class: "like-btn liked" do %>
+          <i class="fas fa-heart"></i>
+          <span><%= post.likes.count %></span>
+        <% end %>
+      <% else %>
+        <%= button_to post_likes_path(post), method: :post, class: "like-btn" do %>
+          <i class="far fa-heart"></i>
+          <span><%= post.likes.count %></span>
+        <% end %>
+      <% end %>
+    <% else %>
+      <div class="like-btn like-btn-readonly">
+        <i class="far fa-heart"></i>
+        <span><%= post.likes.count %></span>
+      </div>
+    <% end %>
+  </div>
+</turbo_frame>

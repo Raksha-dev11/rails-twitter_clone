@@ -1,0 +1,12 @@
+<div id="<%= dom_id(comment) %>" class="comment">
+  <div class="post-header">
+    <div class="post-avatar"><%= comment.user.email[0].upcase if comment.user %></div>
+    <div class="post-info">
+      <div class="post-meta">
+        <span class="post-author"><%= comment.user.email.split('@')[0] if comment.user %></span>
+        <span class="post-time"><%= time_ago_in_words(comment.updated_at) %> ago</span>
+      </div>
+      <div class="post-content"><%= simple_format(comment.content) %></div>
+    </div>
+  </div>
+</div>

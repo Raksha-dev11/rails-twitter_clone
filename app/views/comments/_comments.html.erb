@@ -1,0 +1,13 @@
+<div style="border-top: 1px solid var(--border-color); margin-top: 16px; padding-top: 16px;">
+  <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 16px; color: var(--text-dark);">Comments</h2>
+
+  <div id="comments" style="margin-bottom: 16px;">
+    <% if post.comments.any? %>
+      <%= render post.comments %>
+    <% else %>
+      <p style="color: var(--text-light); text-align: center; padding: 20px 0;">No comments yet. Be the first to comment!</p>
+    <% end %>
+  </div>
+
+  <%= render "comments/new", post: post %>
+</div>

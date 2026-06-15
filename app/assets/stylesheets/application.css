@@ -335,6 +335,64 @@ header {
     margin-bottom: 20px;
 }
 
+/* Like Section */
+.like-section {
+    padding: 8px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.like-section form {
+    display: inline;
+}
+
+.like-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 50px;
+    transition: color 0.2s, background-color 0.2s;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+.like-btn:hover {
+    color: #e0245e;
+    background-color: rgba(224, 36, 94, 0.1);
+}
+
+.like-btn.liked {
+    color: #e0245e;
+}
+
+.like-btn.liked:hover {
+    background-color: rgba(224, 36, 94, 0.1);
+}
+
+.like-btn-readonly {
+    cursor: default;
+}
+
+/* Comments Styles */
+.comment {
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 20px;
+    transition: background-color 0.2s;
+}
+
+.comment:hover {
+    background-color: var(--hover-bg);
+}
+
+#comments {
+    margin-bottom: 16px;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
     .main-container {
